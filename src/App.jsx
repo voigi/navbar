@@ -1,16 +1,22 @@
 
 import './App.css';
 import Navbar from './components/Navbar';
-import { mock } from './model/mock';
+import LoginForm from './components/LoginForm';
+import DataTable from './components/DataTable';
 
 
 function App() {
  
 
   return (
-    <Navbar/> 
+    <>
+     <Navbar/>
+     <LoginForm/>
+     <DataTable/>
+    </>
+  );
     
-    )
+    
 }
 
 export default App
