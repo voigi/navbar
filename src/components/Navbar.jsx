@@ -1,19 +1,30 @@
-import React from 'react'
-import { mock } from '../model/mock'
+import React, { useContext, useEffect ,useState} from 'react'
+import { UserContext } from '../context/UserContext';
+import Switch from '../components/Switch';
+//import '../App.js';
 
 
 const Navbar = () => {
+
+
+  const { user } = useContext(UserContext);
+  const { status } = useContext(UserContext);
+
+
+
   return (
     <nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
-  </div>
-</nav>
-    
+      <div class="container-fluid">
+        <a class="navbar-brand">Navbar</a>
+
+       { user && status === 'connected' && <span>Bonjour {user.username}</span>}
+
+          {/* <Switch /> */}
+       
+     
+       {status === 'connected' ? <a href="/login"><button class="btn btn-outline-primary">Déconnexion</button></a> : <a href="/login"><button class="btn btn-outline-primary">Connexion</button></a>}
+      </div>
+    </nav>
   )
 }
 
