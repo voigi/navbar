@@ -13,7 +13,7 @@ const Navbar = () => {
   const { setStatus } = useContext(UserContext);
   const { setLogout } = useContext(UserContext);
 
-
+  console.log(user);
 
   const handleLogout = () => {
     setStatus('deconnected');
@@ -23,15 +23,15 @@ const Navbar = () => {
 
 
   return (
-    <nav class="navbar bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand">Navbar</a>
+    <nav className="navbar bg-body-tertiary">
+      <div className="container-fluid">
+        <a className="navbar-brand">Navbar</a>
 
        { user && status === 'connected' && <span>Bonjour {user.username}</span>}
 
           {/* <Switch /> */}
        
-     
+       {status === 'connected' && <a class="position-absolute top-0 end-0 mt-2" style={{marginRight: '9rem'}} onClick={() => navigate('/profil')}><button class="btn btn-outline-primary">Profil</button></a>}
        {status === 'connected' ? <button class="btn btn-outline-danger"  onClick={() => {
        handleLogout();
       }}>Déconnexion</button> : <a href="/login"><button class="btn btn-outline-primary">Connexion</button></a>}

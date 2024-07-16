@@ -11,6 +11,14 @@ export function mock() {
     password: faker.internet.password({ length:8,pattern:/[#?!@$ %^&*-,a-z,A-Z,0-9]/}),
     birthdate: faker.date.birthdate(),
     registeredAt: faker.date.past(),
+    tournoi: faker.datatype.boolean(0.5),
+    snookerFavoriteGames: faker.helpers.arrayElements(["Pool anglais",
+    "Snooker",
+    "Billard américain",
+    "Carambole",
+    "Blackball"], 3),
+    
+
   };
 }
 

@@ -24,7 +24,13 @@ const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setUser({
-      username: e.target.username.value 
+      username: e.target.username.value,
+      email: users.find((user) => user.username === e.target.username.value).email,
+      avatar: users.find((user) => user.username === e.target.username.value).avatar,
+      tournoi: users.find((user) => user.username === e.target.username.value).tournoi,
+      snookerFavoriteGames: users.find((user) => user.username === e.target.username.value).snookerFavoriteGames,
+      
+        
     });
     console.log('Password:', e.target.pass.value);
     for (let i = 0; i < users.length; i++) {
