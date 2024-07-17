@@ -1,24 +1,33 @@
+// Suggested code may be subject to a license. Learn more: ~LicenseLog:3462722702.
 import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import { Container, Row, Col, Image, Stack } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Bouton from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import ball from '../assets/ball.png';
 
 const Profil = () => {
   const { user } = useContext(UserContext);
   const { status } = useContext(UserContext);
-   
-console.log(user);
-console.log(user.tournoi);
-console.log(user.snookerFavoriteGames);
+
+  console.log(user);
+  console.log(user.tournoi);
+  console.log(user.snookerFavoriteGames);
+
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
 
   const navi = useNavigate();
 
   const backHome = () => {
     navi('/');
   };
-  const returnlogin =() => {
+  const returnlogin = () => {
     navi('/login');
   };
 
@@ -28,103 +37,103 @@ console.log(user.snookerFavoriteGames);
     }
   }, [user]);
 
-console.log(user.avatar);
+  console.log(user.avatar);
 
   return (
-   
-    // <div className="container">
-    //   <h3 className="text-center">Profil:</h3>
-    //   <div className="card bg-light p-4 shadow">
-    //     <h2 className="mb-4">Nom: {user.username}</h2>
-    //     <h2>Prénom:</h2>
-    //     <h2>Email: {user.email}</h2>
-    //     <h2>Date de naissance:</h2>
-    //     <h2>Date d'inscription:</h2>
-    //     <h2>Mot de passe:</h2>
-    //   </div>
-    // </div>
-    <Container className="mt-5">
-
- <h3 className="text-center">Mon Profil</h3>
-      <div className='card bg-light p-4 shadow'>
 
 
-            <Row  >
-      
-      <Col className='d-flex justify-content-center'>
-
-        <Image src={user.avatar} alt="Avatar" roundedCircle width="200"  className='shadow' />
-       
-      </Col>
-      <Row>
-        <Col className="d-flex justify-content-center">
-          <h2>{user.username}</h2>
-        </Col>
-        
-      </Row>
-    </Row>
-
-    <Row className="mt-3">
-      <Col>
-
-      
-      
-        <Stack direction="horizontal">
-          <a href="https://www.linkedin.com/in/johndoe/" className="me-2">
-            <i className="fab fa-linkedin"></i>
-          </a>
-          <a href="https://github.com/johndoe" className="me-2">
-            <i className="fab fa-github"></i>
-          </a>
-          <a href="mailto:johndoe@example.com">
-            <i className="fas fa-envelope"></i>
-          </a>
-        </Stack>
-      </Col>
-    </Row>
 
 
-    <Row className="mt-4">
-      <Col>
-        <h3>Compétences</h3>
-        <ul>
+
+      <><Container className="mt-5">
+      <h3 className="text-center">Mon Profil</h3>
+
+      <div className='card bg-light p-4 shadow border rounded position-absolute  start-50 translate-middle' style={{ width: '70rem', top: '45%' }}>
 
 
-          <li>Tournoi: {user && status === 'connected' && user.tournoi === true ? <Badge bg="success">Oui</Badge> : <Badge bg="danger">Non</Badge>}</li>
-        
-          
-          <li><span>Billard Favoris: </span> 
-            
-              {user && status === 'connected' &&
-                user.snookerFavoriteGames.map((game, index) => (
-                  <Badge className='me-1' bg="secondary" key={index}>{game}</Badge>
-                ))
-              }
-              
-              
-          
+        <Row>
 
-           
-            </li>
+          <Col className='d-flex justify-content-center'>
 
-           {
-      
-          }
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Node.js</li>
-        </ul>
-      </Col>
-    </Row>
+            <Image src={user.avatar} alt="Avatar" roundedCircle width="200" className='shadow' />
+
+          </Col>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <h2>{user.username}</h2>
+
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              <p>{user.email}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col className="d-flex justify-content-center">
+              {user.tournoi === true && <Bouton onClick={() => navi('/tournoi')}>Acceder au tournoi</Bouton>}
+            </Col>
+
+          </Row>
+
+
+
+        </Row>
+
+        <Row className="mt-3">
+          <Col>
+
+
+
+            <Stack direction="horizontal">
+              <a href="https://www.linkedin.com/in/johndoe/" className="me-2">
+                <i className="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/johndoe" className="me-2">
+                <i className="fab fa-github"></i>
+              </a>
+              <a href="mailto:johndoe@example.com">
+                <i className="fas fa-envelope"></i>
+              </a>
+            </Stack>
+          </Col>
+        </Row>
+        <Row className="mt-4">
+          <Col>
+            <h3 className="ms-2">Informations</h3>
+            <ul className="list-unstyled">
+              <li><img src={ball} alt="ball" width="25" height="25" />Tournoi: {user && status === 'connected' && user.tournoi === true ? <Badge bg="success">Oui</Badge> : <Badge bg="danger">Non</Badge>}</li>
+              <li><img src={ball} alt="ball" width="25" height="25" /><span>Billard Favoris: </span>
+
+                {user && status === 'connected' &&
+                  user.snookerFavoriteGames.map((game, index) => (
+                    <Badge className='me-1' bg="secondary" key={index}>{game}</Badge>
+                  ))}
+
+              </li>
+
+              <li><img src={ball} alt="ball" width="25" height="25" /><span>Date de naissance: </span>{user.birthdate.toLocaleDateString('fr', options)}</li>
+
+
+              <li><img src={ball} alt="ball" width="25" height="25" /><span>Date d'inscription: </span>{user.registeredAt.toLocaleDateString('fr', options)}</li>
+              {user.tournoi === true && <li><img src={ball} alt="ball" width="25" height="25" /><span>team: {user.team}</span></li>}
+              <li><img src={ball} alt="ball" width="25" height="25" />Node.js</li>
+            </ul>
+          </Col>
+        </Row>
+
       </div>
 
-       <div className="mt-3">
 
-       
+    </Container>
+      <div className="mt-3 position-absolute" style={{ top: '77%', left: '20.9%' }}>
+        <Bouton className="btn btn-primary" onClick={() => backHome()}>Retour</Bouton>
+      </div>
+      
+      </>
 
-        <Bouton className="btn btn-primary" onClick={() => backHome() }>Retour</Bouton>
-       </div>
-  </Container>
+   
+
   );
 }
 

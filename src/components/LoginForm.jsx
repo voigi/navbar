@@ -28,7 +28,10 @@ const LoginForm = () => {
       email: users.find((user) => user.username === e.target.username.value).email,
       avatar: users.find((user) => user.username === e.target.username.value).avatar,
       tournoi: users.find((user) => user.username === e.target.username.value).tournoi,
+      birthdate: users.find((user) => user.username === e.target.username.value).birthdate,
+      registeredAt: users.find((user) => user.username === e.target.username.value).registeredAt,
       snookerFavoriteGames: users.find((user) => user.username === e.target.username.value).snookerFavoriteGames,
+      team: users.find((user) => user.username === e.target.username.value).team,
       
         
     });

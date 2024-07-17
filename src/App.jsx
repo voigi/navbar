@@ -11,6 +11,7 @@ import Profil from './pages/Profil';
 import NoMatch from './components/NoMatch';
 import { useContext } from 'react';
 import { UserContext } from './context/UserContext';
+import Tournoi from './pages/Tournoi';
 
 
 
@@ -33,7 +34,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="*" element={<NoMatch />} />
           <Route path="/login" element={<LoginForm />} />
-          
+          <Route path="/tournoi" element={<Tournoi />} />
           <Route path="/profil" element={<Profil />} /> 
       
          

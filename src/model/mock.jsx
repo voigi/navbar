@@ -16,7 +16,8 @@ export function mock() {
     "Snooker",
     "Billard américain",
     "Carambole",
-    "Blackball"], 3),
+    "Blackball"], {min: 1, max: 5}),
+    team: faker.helpers.arrayElements(["Equipe Verte", "Equipe Rouge"],1),
     
 
   };
