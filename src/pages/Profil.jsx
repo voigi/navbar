@@ -28,7 +28,7 @@ const Profil = () => {
     navi('/');
   };
   const returnlogin = () => {
-    navi('/login');
+    navi('/connect');
   };
 
   useEffect(() => {

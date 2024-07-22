@@ -7,11 +7,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginForm from './components/LoginForm';
 import Homepage from './pages/Homepage';
 import { UserProvider } from './context/UserContext';
+import { AdminProvider } from './context/AdminContext';
 import Profil from './pages/Profil';
 import NoMatch from './components/NoMatch';
 import { useContext } from 'react';
 import { UserContext } from './context/UserContext';
 import Tournoi from './pages/Tournoi';
+import Connect from './pages/Connecté';
 
 
 
@@ -26,7 +28,7 @@ function App() {
   return (
 
     
-  
+    <AdminProvider>
     <UserProvider>
       
       <BrowserRouter>
@@ -34,6 +36,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="*" element={<NoMatch />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/connect" element={< Connect/>} />
           <Route path="/tournoi" element={<Tournoi />} />
           <Route path="/profil" element={<Profil />} /> 
       
@@ -43,7 +46,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </UserProvider>
-   
+   </AdminProvider>
   
 
 

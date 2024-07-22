@@ -1,0 +1,16 @@
+.fc-day-sun,.fc-day-sat {
+    background-color: #f4f5d7;
+}
+th .fc-scrollgrid-sync-inner
+{
+    background-color: white;
+}
+.tippy-box[data-theme~='tomato'] {
+    background-color: tomato;
+    color: yellow;
+  }
+  
+  .tippy-arrow {
+    color: tomato; 
+  }
+
