@@ -13,6 +13,7 @@ const DataTable = () => {
         <th>Username</th>
         <th>Password</th>
         <th>Email</th>
+        <th>Tournoi</th>
         
       </tr>
     </thead>
@@ -23,6 +24,7 @@ const DataTable = () => {
           <td>{user.username}</td>
           <td>{user.password}</td>
           <td>{user.email}</td>
+          <td>{user.tournoi.toString()}</td>
           
         </tr>
       ))}

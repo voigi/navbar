@@ -1,16 +1,15 @@
-import React, { useContext, useEffect ,useState} from 'react'
+import React, { useContext} from 'react'
 import { UserContext } from '../context/UserContext';
 import { AdminContext } from '../context/AdminContext';
-import Switch from '../components/Switch';
 import { useNavigate } from 'react-router-dom';
-//import '../App.js';
+
 
 
 const Navbar = () => {
 
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-  const  { admin } = useContext(AdminContext);
+  const {admin} = useContext(AdminContext);
   const { status } = useContext(UserContext);
   const { setStatus } = useContext(UserContext);
   const { setLogout } = useContext(UserContext);
@@ -30,10 +29,11 @@ const Navbar = () => {
         <a className="navbar-brand">Navbar</a>
 
        { user && status === 'connected' && <span>Bonjour {user.username}</span>}
+       { admin && status === 'connected' && <span>Bonjour Admin</span>}
 
-          {/* <Switch /> */}
+     
        
-
+       {admin && status === 'connected' && <a class="position-absolute top-0 end-0 mt-2" style={{marginRight: '9rem'}} onClick={() => navigate('/tournoi')}><button class="btn btn-outline-primary">Admin</button></a>}
        {user && status === 'connected' && <a class="position-absolute top-0 end-0 mt-2" style={{marginRight: '9rem'}} onClick={() => navigate('/profil')}><button class="btn btn-outline-primary">Profil</button></a>}
        {status === 'connected' ? <button class="btn btn-outline-danger"  onClick={() => {
        handleLogout();
