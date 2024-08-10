@@ -13,4 +13,8 @@ th .fc-scrollgrid-sync-inner
   .tippy-arrow {
     color: tomato; 
   }
+  p{
+    margin:0;
+  }
+
 
